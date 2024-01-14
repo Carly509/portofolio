@@ -10,11 +10,9 @@ import styled from 'styled-components';
 import {
   IconRight,
   Twitter,
-  Facebook,
   Linkedin,
   Github,
   Instagram,
-  Dribble,
 } from '../Icons';
 
 /* ---------------------------- Style Dependency ---------------------------- */
@@ -45,8 +43,8 @@ const FooterLink: React.FC<IFooterLink &
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://twitter.com/code_wonders"
-          aria-label="Go To Adenekan Wonderful Twitter Page"
+          href="https://twitter.com/TesnorC"
+          aria-label="Go To Carly Twitter Page"
           title="Twitter Page"
         >
           <Twitter />
@@ -54,17 +52,8 @@ const FooterLink: React.FC<IFooterLink &
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://www.facebook.com/AdenekanWonderful"
-          aria-label="Go To Adenekan Wonderful Facebook Page"
-          title="Facebook Page"
-        >
-          <Facebook />
-        </a>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://linkedin.com/in/codewonders"
-          aria-label="Go To Adenekan Wonderful Linkedin Page"
+          href="https://www.linkedin.com/in/carly-tesnor-633736160/"
+          aria-label="Go To Carly Linkedin Page"
           title="Linkedin Page"
         >
           <Linkedin />
@@ -72,8 +61,8 @@ const FooterLink: React.FC<IFooterLink &
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://github.com/adenekan41"
-          aria-label="Go To Adenekan Wonderful Github Page"
+          href="https://github.com/Carly509"
+          aria-label="Go To Carly Github Page"
           title="Github Page"
         >
           <Github />
@@ -81,17 +70,8 @@ const FooterLink: React.FC<IFooterLink &
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://dribbble.com/codewonders"
-          aria-label="Go To Adenekan Wonderful Dribble Page"
-          title="Dribbble Page"
-        >
-          <Dribble />
-        </a>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://instagram.com/codewonders"
-          aria-label="Go To Adenekan Wonderful Instagram Page"
+          href="https://www.instagram.com/tazz_509/"
+          aria-label="Go To Adenekan Carly Instagram Page"
           title="Instagram Page"
         >
           <Instagram />

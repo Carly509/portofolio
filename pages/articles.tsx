@@ -5,7 +5,6 @@ import React, { useContext } from 'react';
 
 /* -------------------------- Internal Dependencies ------------------------- */
 import Layout, { PageWrapper } from '../components/Layout';
-import FooterLink from '../components/Footer';
 import Tabs, { TabItems } from '../components/Tabs';
 import MansoryLayout from '../components/Mansory';
 import MansoryItem from '../components/Mansory/mansory-item';
@@ -20,13 +19,13 @@ const Articles = () => {
         <PageWrapper>
           <h1 className="intro__text">Reads.</h1> <br />
           <Tabs>
-            <TabItems label="All">
+            {/* <TabItems label="All">
               <MansoryLayout>
                 {articles.map((item, index) => (
                   <MansoryItem key={index} item={item} />
                 ))}
               </MansoryLayout>
-            </TabItems>
+            </TabItems> */}
             <TabItems label="Articles">
               <MansoryLayout>
                 {articles.map(
@@ -47,26 +46,9 @@ const Articles = () => {
                 )}
               </MansoryLayout>
             </TabItems>
-            <TabItems label="Videos">
-              <MansoryLayout>
-                {articles.map(
-                  (item, index) =>
-                    item.type.includes('video') && (
-                      <MansoryItem key={index} item={item} />
-                    )
-                )}
-              </MansoryLayout>
-            </TabItems>
           </Tabs>
         </PageWrapper>
       </PageSection>
-
-      <PageWrapper>
-        <FooterLink goto="/contact" className="mt-3 mb-5">
-          Can you say hi now ?.
-        </FooterLink>
-        <br />
-      </PageWrapper>
     </Layout>
   );
 };

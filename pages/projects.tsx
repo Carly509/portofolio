@@ -22,13 +22,13 @@ const Projects = () => {
         <PageWrapper>
           <h1 className="intro__text">Projects.</h1> <br />
           <Tabs>
-            <TabItems label="All">
+            {/* <TabItems label="All">
               <MansoryLayout>
                 {projectsData.map((item, index) => (
                   <MansoryItem key={index} item={item} />
                 ))}
               </MansoryLayout>
-            </TabItems>
+            </TabItems> */}
             <TabItems label="Projects">
               <MansoryLayout>
                 {projectsData.map(
@@ -59,7 +59,7 @@ const Projects = () => {
                 )}
               </MansoryLayout>
             </TabItems>
-            <TabItems label="Designs" href="https://dribbble.com/codewonders" />
+            {/* <TabItems label="Designs" href="https://dribbble.com/codewonders" /> */}
           </Tabs>
         </PageWrapper>
       </PageSection>

@@ -9,7 +9,6 @@ import Link from 'next/link';
 /* -------------------------- Internal Dependencies ------------------------- */
 
 import Layout, { PageWrapper } from '../components/Layout';
-import FooterLink from '../components/Footer';
 
 const Resume = () => {
   const resumeData =
@@ -65,12 +64,6 @@ const Resume = () => {
             title="Adenekan Wonderful Resumé"
           />
         </PageSection>
-        <br />
-        <br />
-        <FooterLink goto="/contact" className="mt-3 mb-5">
-          Are you convinced to contact me now ?
-        </FooterLink>
-        <br />
       </PageWrapper>
     </Layout>
   );

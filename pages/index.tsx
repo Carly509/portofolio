@@ -32,35 +32,21 @@ const Home = () => {
             </motion.h1>
             <motion.p {...getTransitions(0.3)}>
               {' '}
-              Your friendly neighborhood frontend developer, UX architect, and
-              JavaScript engineer. I spend my days (and often nights) painting
-              the Internet canvas with{' '}
+              Ever since I was young, I've been passionate about IT, which led me to pursue a career as a software engineer. For over 6 years, I've dedicated my days (and often nights) to crafting {' '}
               <Link href="/projects" aria-label="Go to Projects Page">
                 Projects
               </Link>{' '}
-              and lines of code, turning zeroes and ones into immersive,
-              interactive experiences,{' '}
+              and writing lines of code, transforming zeros and ones into engaging, interactive experiences.{' '}
             </motion.p>
             <motion.p {...getTransitions(0.5)}>
-              Bona fide photochromic{' '}
-              <Link href="/articles" aria-label="Check out my Lens">
-                Lens
-              </Link>{' '}
-              enthusiast - sunlight or indoors, I&apos;ve got it covered. I
-              tread the path of minimalism, finding beauty in simplicity and
-              order. When I'm not crafting beautiful web experiences, you can
-              find me reading{' '}
+              I have a deep love for manga and video games, but you can also find me engrossed in{' '}
               <Link
                 href="/articles"
                 aria-label="Go to Articles Page And Check What I Read"
               >
                 Articles
               </Link>{' '}
-              or swaying to the rhythm of Pop Music & Jazz, losing myself in the
-              captivating flow of melodies. anyways you can{' '}
-              <Link href="/contact" aria-label="Go to Contact Page">
-                Contact Me
-              </Link>
+              or swaying to the rhythm of music, getting lost in the enchanting flow of melodies.{' '}
             </motion.p>
           </article>
 

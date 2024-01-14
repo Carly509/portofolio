@@ -94,7 +94,7 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item hover__bottom">
                   <Link
-                    href="/MyThoughts"
+                    href="/articles"
                     activeClassName="is-active"
                     className="nav-link"
                     id="cardHover"
