@@ -24,11 +24,11 @@ const Home = () => {
         <PageWrapper>
           <article>
             <motion.h1
-              data-text="I'm Adenekan Wonderful"
+              data-text="I'm Carly Tesnor"
               className="intro__text"
               {...getTransitions(0.1)}
             >
-              <mark className="mark">I&apos;m Adenekan Wonderful</mark>
+              <mark className="mark">I&apos;m Carly Tesnor</mark>
             </motion.h1>
             <motion.p {...getTransitions(0.3)}>
               {' '}
