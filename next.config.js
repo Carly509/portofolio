@@ -2,7 +2,7 @@
 
 module.exports = {
   images: {
-    domains: ['i.ibb.co'],
+    domains: ['i.ibb.co', 'user-images.githubusercontent.com', 'is1-ssl.mzstatic.com'],
   },
   output: 'standalone',
   reactStrictMode: false,
