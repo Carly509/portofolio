@@ -6,7 +6,7 @@ const PROJECTS_DATA = [
       'An image of "Phineas and Ferb" an American animated television series made with css',
     imageUrl: 'https://user-images.githubusercontent.com/42774502/132997448-1c64aab1-7466-4752-aba1-e764ea6ad1aa.png',
     github: 'https://github.com/Carly509/cartoons-css?tab=readme-ov-file',
-    type: ['project', 'open-source', 'tools'],
+    type: ['project', 'open-source'],
     technologies: ['Sass & CSS'],
   },
   {
@@ -16,7 +16,7 @@ const PROJECTS_DATA = [
       'This is a classic Snake game built with Ruby and Ruby2D library. ',
     github: 'https://github.com/Carly509/snake-game',
     imageUrl: 'https://user-images.githubusercontent.com/42774502/269058153-ffb41a19-0a06-4958-a238-e96af4cf140a.png',
-    type: ['project', 'open-source', 'tools'],
+    type: ['project', 'open-source'],
     technologies: ['Ruby', 'Ruby2D'],
   },
   {
