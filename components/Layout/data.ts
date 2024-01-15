@@ -82,9 +82,9 @@ export const actions = (theme: () => void) => [
         children: ARTICLE_DATA.map((project) =>
           createScoutAction({
             label: project.title,
-            href: project.link,
-            description: project.description,
-            icon: project.imageUrl,
+            // href: project.link,
+            // description: project.description,
+            // icon: project.imageUrl,
           })
         ),
       }),
