@@ -52,7 +52,7 @@ export const actions = (theme: () => void) => [
   }),
 
   createScoutSection({
-    label: 'BY Codewonders',
+    label: '',
 
     children: [
       createScoutPage({

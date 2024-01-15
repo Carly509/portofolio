@@ -41,7 +41,7 @@ const Layout: React.FC<PropsWithChildren<{
     <Main>
       <BodyStyling theme={theme} />
       <Head>
-        <title>{`${title} | Adenekan Wonderful | Codewonders`}</title>
+        <title>{`${title}`}</title>
         <meta
           name="msapplication-TileColor"
           content={`${theme ? '#000000' : '#FFFFFF'}`}
