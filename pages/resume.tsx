@@ -11,13 +11,6 @@ import Link from 'next/link';
 import Layout, { PageWrapper } from '../components/Layout';
 
 const Resume = () => {
-  const resumeData =
-    'https://www.canva.com/design/DAEEkidwA2Q/view?utm_content=DAEEkidwA2Q&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink';
-
-  const previewData = `${resumeData.substr(
-    0,
-    resumeData.lastIndexOf('/') + 1
-  )}view?embed`;
 
   return (
     <Layout title="Resume">
@@ -26,14 +19,12 @@ const Resume = () => {
           <article>
             <h1 className="intro__text">Resumé.</h1>
             <p>
-              Reach out to me via my{' '}
-              <b>
-                <Link href="/contact">contact page</Link>
-              </b>{' '}
+              All infos to Reach out to me are on my resume.{' '}
               .{' '}
+              <br/>
               <b>
                 <a
-                  href={`https://drive.google.com/file/d/${process.env.NEXT_PUBLIC_RESUME_LINK}/view?usp=sharing`}
+                  href={`https://drive.google.com/file/d/1bvs1u_raZ2kT3UuCVbZ8uoVJjQnVxwTg/view?usp=sharing`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Go to Resumé Page"
@@ -44,7 +35,7 @@ const Resume = () => {
               or{' '}
               <b>
                 <a
-                  href={`https://drive.google.com/file/d/${process.env.NEXT_PUBLIC_RESUME_LINK}/view?usp=sharing`}
+                  href={`https://drive.google.com/file/d/1bvs1u_raZ2kT3UuCVbZ8uoVJjQnVxwTg/view?usp=sharing`}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Go to Resumé Page"
@@ -56,13 +47,6 @@ const Resume = () => {
             </p>
           </article>
           <br />
-          <iframe
-            src={previewData}
-            allowFullScreen
-            width="740"
-            height="780"
-            title="Adenekan Wonderful Resumé"
-          />
         </PageSection>
       </PageWrapper>
     </Layout>

@@ -90,7 +90,7 @@ const About = () => {
                 </p>
               </li>
 
-              <li>
+              {/* <li>
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
@@ -122,7 +122,7 @@ const About = () => {
                   fine-tuning stylesheets and crafting seamless user experiences
                   that flow effortlessly.
                 </p>
-              </li>
+              </li> */}
             </ul>
           </article>
         </PageWrapper>
@@ -234,7 +234,7 @@ const About = () => {
           </article>
         </PageWrapper>
 
-        <PageWrapper
+        {/* <PageWrapper
           className="mb-5"
           aria-label="You are now in my musical playlist section"
         >
@@ -354,9 +354,9 @@ const About = () => {
               </li>
             </ul>
           </article>
-        </PageWrapper>
+        </PageWrapper> */}
 
-        <PageWrapper aria-label="You are now in lens section">
+        {/* <PageWrapper aria-label="You are now in lens section">
           <article>
             <h4>My Photochromic Lens.</h4>
             <ul className="timeline">
@@ -375,7 +375,7 @@ const About = () => {
               </li>
             </ul>
           </article>
-        </PageWrapper>
+        </PageWrapper> */}
       </PageSection>
 
       <PageWrapper>

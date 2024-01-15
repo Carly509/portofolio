@@ -29,18 +29,18 @@ const PROJECTS_DATA = [
     type: ['project'],
     technologies: ['React Native', 'Redux Saga', 'Javascript', 'Firebase'],
   },
-  {
-    title: 'Piggment Chrome Extension',
-    github: 'https://github.com/adenekan41/piggment-chrome',
-    description: 'The gradient you have always wanted in a new tab',
-    about:
-      'Piggment is a curated collection of amazingly colored gradients for designers, developers, and smart creators over the world. now you can generate, explore, and save, easy CSS cross-browser gradient codes all in a new tab.',
-    link:
-      'https://chrome.google.com/webstore/detail/piggment-crafted-to-inspi/eifkhhlfjplpakoddkndkgjhfajnhffg',
-    imageUrl: 'https://i.ibb.co/Pxm6yzy/Screenshot-2020-07-28-at-02-48-43.png',
-    type: ['project', 'open-source', 'tools'],
-    technologies: ['React', 'Context API', 'Javascript'],
-  }
+  // {
+  //   title: 'Piggment Chrome Extension',
+  //   github: 'https://github.com/adenekan41/piggment-chrome',
+  //   description: 'The gradient you have always wanted in a new tab',
+  //   about:
+  //     'Piggment is a curated collection of amazingly colored gradients for designers, developers, and smart creators over the world. now you can generate, explore, and save, easy CSS cross-browser gradient codes all in a new tab.',
+  //   link:
+  //     'https://chrome.google.com/webstore/detail/piggment-crafted-to-inspi/eifkhhlfjplpakoddkndkgjhfajnhffg',
+  //   imageUrl: 'https://i.ibb.co/Pxm6yzy/Screenshot-2020-07-28-at-02-48-43.png',
+  //   type: ['project', 'open-source', 'tools'],
+  //   technologies: ['React', 'Context API', 'Javascript'],
+  // }
 ];
 
 export default PROJECTS_DATA;
