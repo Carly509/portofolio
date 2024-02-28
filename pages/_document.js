@@ -37,7 +37,7 @@ export default class MyDocument extends Document {
       <html lang="en">
         <Head>
           {this.props.styleTags}
-          <meta name="author" content="Adenekan Wonderful" />
+          <meta name="author" content="" />
           <meta
             name="keywords"
             content=""
@@ -58,10 +58,10 @@ export default class MyDocument extends Document {
             name="msapplication-config"
             content="/icons/browserconfig.xml"
           />
-          <meta name="twitter:site" content="@code_wonders" />
+          <meta name="twitter:site" content="" />
           <meta
             name="twitter:image"
-            content="https://i.ibb.co/SxxqTRk/Mac-Book-Pro-16-10.png"
+            content=""
           />
           <link
             rel="preload"
@@ -152,7 +152,7 @@ export default class MyDocument extends Document {
           <meta property="og:url" content="" />
           <meta
             property="og:image"
-            content="https://i.ibb.co/SxxqTRk/Mac-Book-Pro-16-10.png"
+            content=""
           />
           <meta
             name="apple-mobile-web-app-title"

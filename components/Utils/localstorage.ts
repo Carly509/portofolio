@@ -1,4 +1,4 @@
-const STATE = 'CODE_WONDERS';
+const STATE = 'CODE        ';
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem(STATE);
