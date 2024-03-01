@@ -31,7 +31,7 @@ const PROJECTS_DATA = [
   },
   // {
   //   title: 'Piggment Chrome Extension',
-  //   github: 'https://github.com/adenekan41/piggment-chrome',
+  //   github: 'https://github.com/Carly509',
   //   description: 'The gradient you have always wanted in a new tab',
   //   about:
   //     'Piggment is a curated collection of amazingly colored gradients for designers, developers, and smart creators over the world. now you can generate, explore, and save, easy CSS cross-browser gradient codes all in a new tab.',
