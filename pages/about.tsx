@@ -30,7 +30,7 @@ const About = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Open Github Link"
-                  href="https://github.com/adenekan41"
+                  href="https://github.com/Carly509"
                 >
                   Engineering{' '}
                   <small>
@@ -42,7 +42,7 @@ const About = () => {
                   rel="noopener noreferrer"
                   aria-label="Open Github Link"
                   id="cardHover"
-                  href="https://github.com/adenekan41"
+                  href="https://github.com/Carly509"
                   className="float-right"
                 >
                   View Github
