@@ -1,5 +1,41 @@
 const PROJECTS_DATA = [
   {
+    title: 'Landing Page Template',
+    github: 'https://github.com/Carly509',
+    description: '',
+    about:
+      'Template that can be use in any categor of aplications with just smal change',
+    link:
+      'https://landing-page-template-ryqh.vercel.app/',
+    imageUrl: '',
+    type: ['project', 'open-source', 'tools'],
+    technologies: ['React', 'Context API', 'Javascript'],
+  },
+  {
+    title: 'Daily news about AI technology',
+    github: 'https://github.com/Carly509',
+    description: '',
+    about:
+      '',
+    link:
+      'https://gpt3-5-ui.vercel.app/',
+    imageUrl: '',
+    type: ['project', 'open-source', 'tools'],
+    technologies: ['React', 'Context API', 'Javascript'],
+  },
+  {
+    title: 'Piggment Chrome Extension',
+    github: 'https://github.com/Carly509',
+    description: 'The gradient you have always wanted in a new tab',
+    about:
+      'Piggment is a curated collection of amazingly colored gradients for designers, developers, and smart creators over the world. now you can generate, explore, and save, easy CSS cross-browser gradient codes all in a new tab.',
+    link:
+      'https://chrome.google.com/webstore/detail/piggment-crafted-to-inspi/eifkhhlfjplpakoddkndkgjhfajnhffg',
+    imageUrl: 'https://i.ibb.co/Pxm6yzy/Screenshot-2020-07-28-at-02-48-43.png',
+    type: ['project', 'open-source', 'tools'],
+    technologies: ['React', 'Context API', 'Javascript'],
+  },
+  {
     title: ' "Phineas and Ferb" ',
     description: ' "Phineas and Ferb" ',
     about:
@@ -28,19 +64,7 @@ const PROJECTS_DATA = [
     imageUrl: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/5f/56/55/5f5655fc-a2d7-695c-031c-d270dfe170dc/79ccc47b-0543-4b2d-9f94-7fd544b383c3_Simulator_Screen_Shot_-_iPhone_14_Pro_Max_-_2023-03-17_at_13.13.23.png/460x0w.webp',
     type: ['project'],
     technologies: ['React Native', 'Redux Saga', 'Javascript', 'Firebase'],
-  },
-  // {
-  //   title: 'Piggment Chrome Extension',
-  //   github: 'https://github.com/Carly509',
-  //   description: 'The gradient you have always wanted in a new tab',
-  //   about:
-  //     'Piggment is a curated collection of amazingly colored gradients for designers, developers, and smart creators over the world. now you can generate, explore, and save, easy CSS cross-browser gradient codes all in a new tab.',
-  //   link:
-  //     'https://chrome.google.com/webstore/detail/piggment-crafted-to-inspi/eifkhhlfjplpakoddkndkgjhfajnhffg',
-  //   imageUrl: 'https://i.ibb.co/Pxm6yzy/Screenshot-2020-07-28-at-02-48-43.png',
-  //   type: ['project', 'open-source', 'tools'],
-  //   technologies: ['React', 'Context API', 'Javascript'],
-  // }
+  }
 ];
 
 export default PROJECTS_DATA;
