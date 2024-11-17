@@ -7,7 +7,7 @@ const PROJECTS_DATA = [
       'Template that can be use in any categor of aplications with just smal change',
     link:
       'https://landing-page-template-ryqh.vercel.app/',
-    imageUrl: 'https://private-user-images.githubusercontent.com/42774502/386988013-62176bb2-b203-48f8-a76c-4a427cd60a37.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzE4Njg3OTcsIm5iZiI6MTczMTg2ODQ5NywicGF0aCI6Ii80Mjc3NDUwMi8zODY5ODgwMTMtNjIxNzZiYjItYjIwMy00OGY4LWE3NmMtNGE0MjdjZDYwYTM3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTE3VDE4MzQ1N1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTIyMWVjZTM4OTMxNTIxNzc0NTg1YTgxMTFjZDhmYjY1ZDAzYmE5ZmFkMjI2MzI2YjAzNmZjYTQwOTg4YTQwMWQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.2RA7QQv1hPQiRVi0gmlISaFTgSBz7rUC6HqIOKnwo5U',
+    imageUrl: 'https://user-images.githubusercontent.com/42774502/386988013-62176bb2-b203-48f8-a76c-4a427cd60a37.png',
     type: ['project', 'open-source', 'tools'],
     technologies: ['React', 'Context API', 'Javascript'],
   },
@@ -31,7 +31,7 @@ const PROJECTS_DATA = [
       'Agency Page',
     link:
       'https://carly509.github.io/agency/',
-    imageUrl: 'https://private-user-images.githubusercontent.com/42774502/386987513-94573955-0dc7-41e1-8faa-03a2625b1285.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzE4NjgzODcsIm5iZiI6MTczMTg2ODA4NywicGF0aCI6Ii80Mjc3NDUwMi8zODY5ODc1MTMtOTQ1NzM5NTUtMGRjNy00MWUxLThmYWEtMDNhMjYyNWIxMjg1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTE3VDE4MjgwN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTEzNDg2ZGUyZWIyMWFhYTcwMmNhMWI3Yzc1ZTlhYjQ4N2YyZWY5YWE2ZjQ2ZWJhN2I1Mzg2ZmQ0OTVkNTM2ZDgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.OiV_IBo5eubT_FTbQsWjRnzwvUDRBgnPLBhqXTk_EEE',
+    imageUrl: 'https://github-production-user-asset-6210df.s3.amazonaws.com/42774502/386988950-d8b8dfd5-5247-4783-83ee-bc143fd27c65.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20241117%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241117T184802Z&X-Amz-Expires=300&X-Amz-Signature=0a1efdf5c4e96bbcf3286730166ccea1ea88ba7416a5853663f9088c5d11f8a9&X-Amz-SignedHeaders=host://private-user-images.githubusercontent.com/42774502/386987513-94573955-0dc7-41e1-8faa-03a2625b1285.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzE4NjgzODcsIm5iZiI6MTczMTg2ODA4NywicGF0aCI6Ii80Mjc3NDUwMi8zODY5ODc1MTMtOTQ1NzM5NTUtMGRjNy00MWUxLThmYWEtMDNhMjYyNWIxMjg1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTE3VDE4MjgwN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTEzNDg2ZGUyZWIyMWFhYTcwMmNhMWI3Yzc1ZTlhYjQ4N2YyZWY5YWE2ZjQ2ZWJhN2I1Mzg2ZmQ0OTVkNTM2ZDgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.OiV_IBo5eubT_FTbQsWjRnzwvUDRBgnPLBhqXTk_EEE',
     type: ['project', 'open-source', 'tools'],
     technologies: ['HTML', 'CSS', 'Javascript'],
   },
