@@ -7,21 +7,45 @@ const PROJECTS_DATA = [
       'Template that can be use in any categor of aplications with just smal change',
     link:
       'https://landing-page-template-ryqh.vercel.app/',
-    imageUrl: '',
+    imageUrl: 'https://private-user-images.githubusercontent.com/42774502/386988013-62176bb2-b203-48f8-a76c-4a427cd60a37.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzE4Njg3OTcsIm5iZiI6MTczMTg2ODQ5NywicGF0aCI6Ii80Mjc3NDUwMi8zODY5ODgwMTMtNjIxNzZiYjItYjIwMy00OGY4LWE3NmMtNGE0MjdjZDYwYTM3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTE3VDE4MzQ1N1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTIyMWVjZTM4OTMxNTIxNzc0NTg1YTgxMTFjZDhmYjY1ZDAzYmE5ZmFkMjI2MzI2YjAzNmZjYTQwOTg4YTQwMWQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.2RA7QQv1hPQiRVi0gmlISaFTgSBz7rUC6HqIOKnwo5U',
     type: ['project', 'open-source', 'tools'],
     technologies: ['React', 'Context API', 'Javascript'],
   },
   {
     title: 'Daily news about AI technology',
     github: 'https://github.com/Carly509',
-    description: '',
+    description: 'AI daily news',
     about:
-      '',
+      'AI updates everyday',
     link:
       'https://gpt3-5-ui.vercel.app/',
-    imageUrl: '',
+    imageUrl: 'https://private-user-images.githubusercontent.com/42774502/386988108-4199dc72-9bec-43b1-8da2-df4a027d652b.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzE4Njg4OTksIm5iZiI6MTczMTg2ODU5OSwicGF0aCI6Ii80Mjc3NDUwMi8zODY5ODgxMDgtNDE5OWRjNzItOWJlYy00M2IxLThkYTItZGY0YTAyN2Q2NTJiLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTE3VDE4MzYzOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPThkYWE5NTFhMTI4ZTZjMWRkMzNiOWNhMWE0ODE2MzA2Mzc3YjBiZTVlNzAzNzhjN2NmOWNiNzZmZDM5NDk5NWEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.3oeGm1vdeEvXadXClMrsDND4w4vlCoLbPeeOmvp-VkA',
     type: ['project', 'open-source', 'tools'],
     technologies: ['React', 'Context API', 'Javascript'],
+  },
+  {
+    title: 'Agency Landing Page',
+    github: 'https://github.com/Carly509',
+    description: 'A challenge',
+    about:
+      'Agency Page',
+    link:
+      'https://carly509.github.io/agency/',
+    imageUrl: 'https://private-user-images.githubusercontent.com/42774502/386987513-94573955-0dc7-41e1-8faa-03a2625b1285.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzE4NjgzODcsIm5iZiI6MTczMTg2ODA4NywicGF0aCI6Ii80Mjc3NDUwMi8zODY5ODc1MTMtOTQ1NzM5NTUtMGRjNy00MWUxLThmYWEtMDNhMjYyNWIxMjg1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTE3VDE4MjgwN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTEzNDg2ZGUyZWIyMWFhYTcwMmNhMWI3Yzc1ZTlhYjQ4N2YyZWY5YWE2ZjQ2ZWJhN2I1Mzg2ZmQ0OTVkNTM2ZDgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.OiV_IBo5eubT_FTbQsWjRnzwvUDRBgnPLBhqXTk_EEE',
+    type: ['project', 'open-source', 'tools'],
+    technologies: ['HTML', 'CSS', 'Javascript'],
+  },
+  {
+    title: 'Social Management Project',
+    github: 'https://github.com/Carly509',
+    description: 'Manage your social media in one place',
+    about:
+      'All in One',
+    link:
+      'https://newsocial-git-main-carly509s-projects.vercel.app/',
+    imageUrl: 'https://private-user-images.githubusercontent.com/42774502/386987815-3580b08f-1922-4ec1-b4d6-ed9560a91d7d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzE4Njg2MjgsIm5iZiI6MTczMTg2ODMyOCwicGF0aCI6Ii80Mjc3NDUwMi8zODY5ODc4MTUtMzU4MGIwOGYtMTkyMi00ZWMxLWI0ZDYtZWQ5NTYwYTkxZDdkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTE3VDE4MzIwOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTk3Mzg3ODViOWJkYTEwNDA4MDRhYmYxNjRlMjA3Yzk0NmM3YWUyMTE2ZDg1MDVhYTZiYWIzYjU0NTQ5NmFlY2MmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.vBig_5IfqHy-ctXYJzCjEKktP4Yxrs__a9YxPJOTMvI',
+    type: ['project', 'open-source', 'tools'],
+    technologies: ['React', 'CSS', 'Javascript'],
   },
   {
     title: 'Piggment Chrome Extension',
