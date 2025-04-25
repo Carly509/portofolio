@@ -32,7 +32,7 @@ const Home = () => {
             </motion.h1>
             <motion.p {...getTransitions(0.3)}>
               {' '}
-              Ever since I was young, I've been passionate about IT, which led me to pursue a career as a software engineer. For over 6 years, I've dedicated my days (and often nights) to crafting {' '}
+              Ever since I was young, I've been passionate about Tech, which led me to pursue a career as a software engineer. For over 6 years, I've dedicated my days (and often nights) to crafting {' '}
               <Link href="/projects" aria-label="Go to Projects Page">
                 Projects
               </Link>{' '}
