@@ -43,7 +43,7 @@ const PROJECTS_DATA = [
       'All in One',
     link:
       'https://newsocial-git-main-carly509s-projects.vercel.app/',
-    imageUrl: 'https://private-user-images.githubusercontent.com/42774502/386987815-3580b08f-1922-4ec1-b4d6-ed9560a91d7d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzE4Njg2MjgsIm5iZiI6MTczMTg2ODMyOCwicGF0aCI6Ii80Mjc3NDUwMi8zODY5ODc4MTUtMzU4MGIwOGYtMTkyMi00ZWMxLWI0ZDYtZWQ5NTYwYTkxZDdkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTE3VDE4MzIwOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTk3Mzg3ODViOWJkYTEwNDA4MDRhYmYxNjRlMjA3Yzk0NmM3YWUyMTE2ZDg1MDVhYTZiYWIzYjU0NTQ5NmFlY2MmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.vBig_5IfqHy-ctXYJzCjEKktP4Yxrs__a9YxPJOTMvI',
+    imageUrl: '/img/social-media.png',
     type: ['project', 'open-source', 'tools'],
     technologies: ['React', 'CSS', 'Javascript'],
   },
