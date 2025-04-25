@@ -7,7 +7,7 @@ const PROJECTS_DATA = [
       'Template that can be use in any categor of aplications with just smal change',
     link:
       'https://landing-page-template-ryqh.vercel.app/',
-    imageUrl: '/public/img/agency-landing.png',
+    imageUrl: '/img/agency-landing.png',
     type: ['project', 'open-source', 'tools'],
     technologies: ['React', 'Context API', 'Javascript'],
   },
