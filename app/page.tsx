@@ -15,7 +15,7 @@ export default function Home() {
         </p>
 
         {/* Two channels, converging into register. The thesis of the site. */}
-        <h1 className={`glitch glitch-boot ${styles.name}`} data-cursor="Home">
+        <h1 className={`glitch ${styles.name}`} data-cursor="Home">
           <span>Carly</span>
           <span>Tesnor</span>
         </h1>
