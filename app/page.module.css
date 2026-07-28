@@ -67,12 +67,6 @@
   color: var(--cyn);
 }
 
-.status .ok::before {
-  content: '●';
-  color: var(--mag);
-  font-size: 0.55rem;
-}
-
 /* The intro runs two columns on a wide screen so neither paragraph outruns a
    comfortable measure, and stacks below that. */
 .intro {
