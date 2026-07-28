@@ -1,0 +1,483 @@
+/* ==========================================================================
+   SIGNAL — design tokens
+   Print misregistration, translated to the display: RGB channel-split,
+   scanlines, a targeting reticle. Night ops by default; day ops inverts
+   the console. Magenta and cyan carry every emphasis between them.
+   ========================================================================== */
+
+:root {
+  /* night ops (default) */
+  --ground: #0a0c10;
+  --ground-2: #0d1017;
+  --panel: #10141d;
+  --panel-2: #131826;
+  --fg: #e6edf3;
+  --fg-2: #7d8ca3;
+  --line: #1c2433;
+  --line-soft: #151b28;
+  --mag: #ff2d78;
+  --cyn: #00e5ff;
+  --glow-mag: rgba(255, 45, 120, 0.35);
+  --glow-cyn: rgba(0, 229, 255, 0.28);
+  --on-accent: #0a0c10;
+  --scrim: rgba(10, 12, 16, 0.55);
+
+  /* type */
+  --display: var(--font-display), 'Archivo Black', 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
+  --mono: var(--font-mono), ui-monospace, 'SF Mono', SFMono-Regular, Menlo,
+    monospace;
+
+  /* scale */
+  --step-hero: clamp(3rem, 12vw, 9.5rem);
+  --step-title: clamp(2rem, 4.6vw, 3.25rem);
+  --step-h2: clamp(1.4rem, 2.4vw, 2rem);
+  --step-h3: 1.375rem;
+  --step-body: clamp(1rem, 0.35vw + 0.94rem, 1.0625rem);
+  --step-small: 0.9375rem;
+  --step-label: 0.6875rem;
+
+  /* space */
+  --gutter: 24px;
+  --measure: 62ch;
+  --bezel: clamp(20px, 4vw, 56px);
+  --shell-max: 1280px;
+  --telemetry-h: 34px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --ground: #eef0ea;
+    --ground-2: #e8eae2;
+    --panel: #e3e6dc;
+    --panel-2: #dbded3;
+    --fg: #10141c;
+    --fg-2: #5a6472;
+    --line: #c9ccc0;
+    --line-soft: #d6d9cd;
+    --mag: #c4005f;
+    --cyn: #007e8f;
+    --glow-mag: rgba(196, 0, 95, 0.16);
+    --glow-cyn: rgba(0, 126, 143, 0.14);
+    --on-accent: #ffffff;
+    --scrim: rgba(238, 240, 234, 0.5);
+  }
+}
+
+/* The toggle stamps data-theme on <html> and must win in both directions. */
+:root[data-theme='dark'] {
+  --ground: #0a0c10;
+  --ground-2: #0d1017;
+  --panel: #10141d;
+  --panel-2: #131826;
+  --fg: #e6edf3;
+  --fg-2: #7d8ca3;
+  --line: #1c2433;
+  --line-soft: #151b28;
+  --mag: #ff2d78;
+  --cyn: #00e5ff;
+  --glow-mag: rgba(255, 45, 120, 0.35);
+  --glow-cyn: rgba(0, 229, 255, 0.28);
+  --on-accent: #0a0c10;
+  --scrim: rgba(10, 12, 16, 0.55);
+}
+
+:root[data-theme='light'] {
+  --ground: #eef0ea;
+  --ground-2: #e8eae2;
+  --panel: #e3e6dc;
+  --panel-2: #dbded3;
+  --fg: #10141c;
+  --fg-2: #5a6472;
+  --line: #c9ccc0;
+  --line-soft: #d6d9cd;
+  --mag: #c4005f;
+  --cyn: #007e8f;
+  --glow-mag: rgba(196, 0, 95, 0.16);
+  --glow-cyn: rgba(0, 126, 143, 0.14);
+  --on-accent: #ffffff;
+  --scrim: rgba(238, 240, 234, 0.5);
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--fg);
+  font-family: var(--display);
+  font-size: var(--step-body);
+  font-weight: 340;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  /* The telemetry bar is fixed to the foot of the viewport. */
+  padding-bottom: var(--telemetry-h);
+  transition:
+    background 0.35s ease,
+    color 0.35s ease;
+}
+
+/* The reticle replaces the system cursor, but only once JS has mounted it
+   and only on precise pointers — no-JS and touch users keep theirs. */
+body.has-reticle,
+body.has-reticle a,
+body.has-reticle button {
+  cursor: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--display);
+  font-weight: 800;
+  margin: 0;
+  text-wrap: balance;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--mag);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyn);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--mag);
+  color: var(--on-accent);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+/* ==========================================================================
+   SHARED PRIMITIVES
+   ========================================================================== */
+
+.shell {
+  width: 100%;
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  padding: 0 var(--bezel);
+}
+
+/* Visible only once it has focus, and then it sits over everything. */
+.skip {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 300;
+  transform: translateY(-200%);
+  background: var(--mag);
+  color: var(--on-accent);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 14px;
+  transition: transform 0.2s ease;
+}
+
+.skip:focus-visible {
+  transform: none;
+}
+
+.label {
+  font-family: var(--mono);
+  font-size: var(--step-label);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.measure {
+  max-width: var(--measure);
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Which of these two shows is a CSS decision, so theme-labelled controls are
+   correct on the server, before JS, and after a system theme change. Same
+   cascade order as the token blocks above. */
+.when-light {
+  display: none;
+}
+
+.when-dark {
+  display: inline;
+}
+
+@media (prefers-color-scheme: light) {
+  .when-light {
+    display: inline;
+  }
+
+  .when-dark {
+    display: none;
+  }
+}
+
+:root[data-theme='light'] .when-light {
+  display: inline;
+}
+
+:root[data-theme='light'] .when-dark {
+  display: none;
+}
+
+:root[data-theme='dark'] .when-light {
+  display: none;
+}
+
+:root[data-theme='dark'] .when-dark {
+  display: inline;
+}
+
+/* ==========================================================================
+   ATMOSPHERE — scanlines, a grid floor that fades toward the horizon, grain,
+   and HUD corner brackets. All fixed, all pointer-events: none.
+   ========================================================================== */
+
+.scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--fg) 3.2%, transparent) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+.grid-floor {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 46vh;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: 0.5;
+  -webkit-mask-image: radial-gradient(
+    85% 100% at 50% 100%,
+    #000 0%,
+    transparent 72%
+  );
+  mask-image: radial-gradient(85% 100% at 50% 100%, #000 0%, transparent 72%);
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 71;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+.hud {
+  position: fixed;
+  inset: 0;
+  z-index: 72;
+  pointer-events: none;
+}
+
+.hud i {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--fg-2);
+  opacity: 0.45;
+}
+
+.hud i:nth-child(1) {
+  top: 14px;
+  left: 14px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.hud i:nth-child(2) {
+  top: 14px;
+  right: 14px;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.hud i:nth-child(3) {
+  bottom: calc(var(--telemetry-h) + 12px);
+  left: 14px;
+  border-right: 0;
+  border-top: 0;
+}
+
+.hud i:nth-child(4) {
+  bottom: calc(var(--telemetry-h) + 12px);
+  right: 14px;
+  border-left: 0;
+  border-top: 0;
+}
+
+/* ==========================================================================
+   CHANNEL-SPLIT — the misregistration of a display. Red and blue offsets
+   converge into register once, when the boot sequence releases them.
+   Never on scroll, never in a loop.
+   ========================================================================== */
+
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+
+/* Default path — no class, no JS: the animation simply runs on mount. */
+.glitch > span {
+  display: block;
+  animation: converge 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.glitch > span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+/* Boot-gated path — only the hero name (glitch-boot), only before the boot
+   sequence releases it. Every other title animates on its own. */
+html.js body:not(.booted) .glitch-boot > span {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes converge {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) skewX(-4deg);
+    text-shadow:
+      -14px 0 var(--mag),
+      14px 0 var(--cyn);
+  }
+  55% {
+    opacity: 1;
+    text-shadow:
+      -4px 0 var(--glow-mag),
+      4px 0 var(--glow-cyn);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    text-shadow:
+      0 0 transparent,
+      0 0 transparent;
+  }
+}
+
+/* On approach, the channels drift apart again — one breath, not a loop. */
+.glitch-hover {
+  transition: text-shadow 0.25s ease;
+}
+
+.glitch-hover:hover {
+  text-shadow:
+    -3px 0 var(--glow-mag),
+    3px 0 var(--glow-cyn);
+}
+
+/* ==========================================================================
+   REVEAL — content arriving under the fold gets one quiet lift, staggered
+   by index. Without JS everything is simply visible.
+   ========================================================================== */
+
+html.js .rise {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 60ms);
+}
+
+html.js .rise.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Land on the final frame rather than skipping the effect entirely. */
+  html.js .rise,
+  html.js body:not(.booted) .glitch-boot > span {
+    opacity: 1;
+    transform: none;
+  }
+}

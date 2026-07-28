@@ -1,0 +1,43 @@
+.header {
+  padding-top: clamp(32px, 6vh, 60px);
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px var(--gutter);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 16px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+}
+
+.title {
+  font-size: var(--step-title);
+  font-stretch: 122%;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.stop {
+  font-style: normal;
+  color: var(--mag);
+}
+
+.aside {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.intro {
+  margin-top: 20px;
+  max-width: var(--measure);
+  color: var(--fg-2);
+}

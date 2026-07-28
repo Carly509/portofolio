@@ -1,0 +1,126 @@
+.page {
+  padding-top: clamp(40px, 8vh, 88px);
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: min(72vh, 700px);
+  padding-bottom: clamp(32px, 6vh, 64px);
+}
+
+.eyebrow {
+  margin: 0;
+}
+
+.eyebrow b {
+  color: var(--mag);
+  font-weight: 500;
+}
+
+/* The name sits directly under the eyebrow — one breath of air, no more. */
+.name {
+  font-size: var(--step-hero);
+  font-stretch: 125%;
+  font-weight: 860;
+  line-height: 0.84;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  margin: 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* On approach the channels drift apart again — once, not a loop. */
+.name > span {
+  transition: text-shadow 0.25s ease;
+}
+
+.name:hover > span {
+  text-shadow:
+    -3px 0 var(--glow-mag),
+    3px 0 var(--glow-cyn);
+}
+
+.status {
+  margin-top: clamp(16px, 3vh, 26px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  font-family: var(--mono);
+  font-size: var(--step-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.status li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status li::before {
+  content: '▸';
+  color: var(--cyn);
+}
+
+.status .ok::before {
+  content: '●';
+  color: var(--mag);
+  font-size: 0.55rem;
+}
+
+/* The intro runs two columns on a wide screen so neither paragraph outruns a
+   comfortable measure, and stacks below that. */
+.intro {
+  margin-top: clamp(26px, 4vh, 40px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 16px clamp(24px, 4vw, 48px);
+  max-width: 78ch;
+}
+
+.intro p {
+  font-size: clamp(1rem, 0.4vw + 0.94rem, 1.125rem);
+  line-height: 1.75;
+  font-weight: 330;
+  color: var(--fg-2);
+  max-width: 48ch;
+}
+
+.intro p:first-child {
+  color: var(--fg);
+}
+
+/* The fill rises from the underline on approach. */
+.inline {
+  color: var(--fg);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--mag);
+  box-shadow: inset 0 0 var(--mag);
+  transition:
+    box-shadow 0.25s ease,
+    color 0.25s ease;
+}
+
+.inline:hover {
+  box-shadow: inset 0 -1.15em var(--mag);
+  color: var(--on-accent);
+}
+
+.elsewhere {
+  margin-top: clamp(30px, 5vh, 48px);
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 14px;
+  width: 100%;
+}
+
+.elsewhere > p {
+  margin: 0;
+}

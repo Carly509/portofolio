@@ -1,0 +1,215 @@
+.panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px;
+  text-decoration: none;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  isolation: isolate;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -3;
+  filter: grayscale(1) brightness(0.62) contrast(1.06);
+  transform: scale(1.001);
+  transition:
+    filter 0.55s ease,
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The duotone: a magenta→cyan gradient applied as the colour channel while
+   the image carries only luminance. It fades as the signal locks. */
+.tone {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(135deg, var(--mag), var(--cyn));
+  mix-blend-mode: color;
+  opacity: 0.6;
+  transition: opacity 0.55s ease;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 8, 12, 0.06) 30%,
+    rgba(6, 8, 12, 0.82) 84%
+  );
+}
+
+/* One scan sweep per approach — never a loop. */
+.sweep {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--glow-cyn) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transform: translateY(-102%);
+}
+
+.index {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--cyn);
+  text-shadow: 0 0 8px var(--glow-cyn);
+  font-variant-numeric: tabular-nums;
+}
+
+.index s {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.year {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.title {
+  font-family: var(--display);
+  font-stretch: 120%;
+  font-weight: 800;
+  font-size: clamp(1.05rem, 1.6vw, 1.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  text-wrap: balance;
+  transition: text-shadow 0.25s ease;
+}
+
+.tagline {
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.78);
+  /* Held back until hover on a precise pointer, always shown otherwise. */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.tech {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 3px 6px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .panel:hover,
+  .panel:focus-visible {
+    border-color: color-mix(in srgb, var(--cyn) 55%, var(--line));
+    box-shadow: 0 0 24px var(--glow-cyn);
+  }
+
+  /* Signal lock: the duotone lifts, the colour develops. */
+  .panel:hover .img,
+  .panel:focus-visible .img {
+    filter: grayscale(0) brightness(0.92);
+    transform: scale(1.035);
+  }
+
+  .panel:hover .tone,
+  .panel:focus-visible .tone {
+    opacity: 0;
+  }
+
+  .panel:hover .sweep,
+  .panel:focus-visible .sweep {
+    opacity: 1;
+    animation: sweep 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1;
+  }
+
+  .panel:hover .title,
+  .panel:focus-visible .title {
+    text-shadow:
+      -2px 0 var(--glow-mag),
+      2px 0 var(--glow-cyn);
+  }
+
+  .panel:hover .tagline,
+  .panel:focus-visible .tagline {
+    max-height: 4em;
+    opacity: 1;
+  }
+}
+
+@keyframes sweep {
+  from {
+    transform: translateY(-102%);
+  }
+  to {
+    transform: translateY(102%);
+  }
+}
+
+/* Touch and coarse pointers never get a hover, so nothing hides. */
+@media not all and (hover: hover) {
+  .img {
+    filter: grayscale(0) brightness(0.92);
+  }
+
+  .tone {
+    opacity: 0;
+  }
+
+  .tagline {
+    max-height: 4em;
+    opacity: 1;
+  }
+}

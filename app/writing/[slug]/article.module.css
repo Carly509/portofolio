@@ -1,0 +1,141 @@
+.page {
+  padding-top: clamp(32px, 6vh, 56px);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: clamp(32px, 5vw, 56px);
+  align-items: start;
+}
+
+.head {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+}
+
+.title {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-stretch: 112%;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  max-width: 26ch;
+}
+
+.dek {
+  margin-top: 16px;
+  max-width: 52ch;
+  font-size: clamp(1.0625rem, 0.5vw + 0.95rem, 1.1875rem);
+  line-height: 1.55;
+  color: var(--fg-2);
+}
+
+.byline {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
+/* ---------- rail ---------- */
+
+.rail {
+  position: sticky;
+  top: 92px;
+  border-left: 1px solid var(--line);
+  padding-left: 24px;
+}
+
+.toc {
+  margin-top: 14px;
+  counter-reset: s;
+  display: grid;
+  gap: 11px;
+}
+
+.toc li {
+  counter-increment: s;
+  position: relative;
+  padding-left: 26px;
+}
+
+.toc li::before {
+  content: counter(s, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  color: var(--cyn);
+}
+
+.toc a {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--fg-2);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.toc a:hover {
+  color: var(--fg);
+  text-shadow: 0 0 10px var(--glow-cyn);
+}
+
+/* ---------- foot ---------- */
+
+.foot {
+  margin-top: clamp(40px, 7vh, 64px);
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px 24px;
+}
+
+.footNote {
+  font-family: var(--mono);
+  font-size: var(--step-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.footLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footLinks a {
+  font-family: var(--mono);
+  font-size: var(--step-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--fg-2);
+  transition: color 0.2s ease;
+}
+
+.footLinks a:hover {
+  color: var(--mag);
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rail {
+    position: static;
+    order: -1;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+    padding-top: 16px;
+  }
+}

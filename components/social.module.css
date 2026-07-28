@@ -1,0 +1,43 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.link {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  color: var(--fg-2);
+  position: relative;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.link svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+/* On approach the chip acquires a glow — the console acknowledging a
+   potential uplink. */
+.link:hover,
+.link:focus-visible {
+  color: var(--fg);
+  border-color: var(--cyn);
+  box-shadow: 0 0 14px var(--glow-cyn);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

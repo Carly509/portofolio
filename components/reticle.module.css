@@ -1,0 +1,156 @@
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  will-change: transform;
+}
+
+/* The acquisition ring. */
+.ring {
+  position: absolute;
+  left: -13px;
+  top: -13px;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--cyn);
+  border-radius: 50%;
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.2s ease;
+}
+
+/* Four ticks on a slow patrol. */
+.ticks {
+  position: absolute;
+  left: -19px;
+  top: -19px;
+  width: 38px;
+  height: 38px;
+  animation: spin 9s linear infinite;
+}
+
+.ticks::before,
+.ticks::after {
+  content: '';
+  position: absolute;
+  background: var(--fg-2);
+}
+
+.ticks::before {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 12%,
+    0 12%,
+    0 88%,
+    100% 88%,
+    100% 100%,
+    0 100%
+  );
+}
+
+.ticks::after {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  clip-path: polygon(
+    0 0,
+    12% 0,
+    12% 100%,
+    0 100%,
+    88% 0,
+    100% 0,
+    100% 100%,
+    88% 100%
+  );
+}
+
+/* The hot pixel. */
+.dot {
+  position: absolute;
+  left: -1.5px;
+  top: -1.5px;
+  width: 3px;
+  height: 3px;
+  background: var(--mag);
+  border-radius: 50%;
+}
+
+/* Target acquired: the ring dilates and shifts to magenta. */
+.root[data-active] .ring {
+  transform: scale(1.5);
+  border-color: var(--mag);
+}
+
+/* Corner-locked: the ticks hold still, the way a scope settles. */
+.root[data-snapped] .ticks {
+  animation-play-state: paused;
+}
+
+.root[data-down] .ring {
+  transform: scale(0.8);
+}
+
+/* The target's designation, in brackets — added by CSS so data-cursor
+   values stay bare words. */
+.tag {
+  position: absolute;
+  left: 20px;
+  top: 14px;
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyn);
+  text-shadow: 0 0 8px var(--glow-cyn);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.tag::before {
+  content: '[';
+  color: var(--mag);
+}
+
+.tag::after {
+  content: ']';
+  color: var(--mag);
+}
+
+.tag[data-show] {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring,
+  .tag {
+    transition: none;
+  }
+
+  .ticks {
+    animation: none;
+  }
+}

@@ -1,0 +1,62 @@
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+  height: var(--telemetry-h);
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2.6vw, 30px);
+  padding: 0 18px;
+  background: color-mix(in srgb, var(--ground) 84%, transparent);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.bar b {
+  color: var(--cyn);
+  font-weight: 500;
+}
+
+.brand {
+  color: var(--mag);
+}
+
+.spacer {
+  margin-left: auto;
+}
+
+.ok {
+  color: var(--cyn);
+}
+
+.ok::before {
+  content: '● ';
+  color: var(--cyn);
+  animation: blink 2.4s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (max-width: 860px) {
+  .optional {
+    display: none;
+  }
+}

@@ -1,0 +1,207 @@
+.page {
+  padding-bottom: clamp(32px, 6vh, 64px);
+}
+
+.resume {
+  font-family: var(--mono);
+  font-size: var(--step-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: color-mix(in srgb, var(--panel) 70%, transparent);
+  border: 1px solid var(--line);
+  padding: 8px 11px;
+  color: var(--fg-2);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.resume:hover {
+  color: var(--fg);
+  border-color: var(--cyn);
+  box-shadow: 0 0 12px var(--glow-cyn);
+}
+
+.h2 {
+  font-size: var(--step-h3);
+  font-stretch: 118%;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.h2::before {
+  content: '// ';
+  color: var(--cyn);
+  font-weight: 400;
+}
+
+/* ---------- two-up pitch ---------- */
+
+.pitch {
+  margin-top: clamp(36px, 6vh, 56px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(24px, 4vw, 48px);
+}
+
+.pitch p {
+  color: var(--fg-2);
+  line-height: 1.75;
+}
+
+.more {
+  display: inline-block;
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: var(--step-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyn);
+  text-decoration: none;
+}
+
+.more:hover {
+  text-shadow: 0 0 10px var(--glow-cyn);
+}
+
+/* ---------- signal rail ---------- */
+
+.railHead {
+  margin: clamp(48px, 8vh, 80px) 0 0;
+}
+
+.rail {
+  margin-top: 18px;
+  border-left: 1px solid var(--line);
+  margin-left: 6px;
+}
+
+.entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr) 108px;
+  gap: 20px;
+  align-items: baseline;
+  padding: 18px 0 18px 28px;
+}
+
+/* Every entry gets a node on the rail; turning points burn magenta. */
+.entry::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 26px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--ground);
+  border: 1px solid var(--fg-2);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.entry[data-mark]::before {
+  background: var(--mag);
+  border-color: var(--mag);
+  box-shadow: 0 0 10px var(--glow-mag);
+}
+
+.entry:hover::before {
+  background: var(--cyn);
+  border-color: var(--cyn);
+  box-shadow: 0 0 10px var(--glow-cyn);
+}
+
+.year {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--cyn);
+}
+
+.entryTitle {
+  font-size: 1.0625rem;
+  font-stretch: 112%;
+  letter-spacing: -0.02em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.entryTitle a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.entryTitle a:hover {
+  border-color: var(--mag);
+  color: var(--mag);
+}
+
+.where {
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.entryText {
+  margin-top: 7px;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--fg-2);
+  max-width: 62ch;
+}
+
+.kind {
+  font-family: var(--mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: right;
+  color: var(--fg-2);
+}
+
+.entry[data-mark] .kind {
+  color: var(--mag);
+}
+
+.offscreen {
+  margin-top: clamp(48px, 8vh, 80px);
+}
+
+.offscreen p {
+  color: var(--fg-2);
+}
+
+.offscreen a {
+  color: var(--fg);
+}
+
+@media (max-width: 720px) {
+  .entry {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px 16px;
+  }
+
+  .year {
+    grid-column: 1;
+  }
+
+  .kind {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .entryBody {
+    grid-column: 1 / -1;
+  }
+}

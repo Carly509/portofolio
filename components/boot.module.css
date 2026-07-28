@@ -1,0 +1,36 @@
+.boot {
+  margin-top: clamp(16px, 3vh, 24px);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--cyn);
+  /* Two lines tall from the start, so typing never shifts layout. */
+  min-height: 2.7em;
+  letter-spacing: 0.04em;
+  white-space: pre-wrap;
+  text-shadow: 0 0 10px var(--glow-cyn);
+}
+
+.caret {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: var(--cyn);
+  vertical-align: -2px;
+  animation: blink 0.9s steps(1) infinite;
+}
+
+/* The boot is done: the caret stops demanding attention. */
+:global(body.booted) .caret {
+  animation: none;
+  opacity: 0.35;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

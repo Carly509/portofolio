@@ -1,0 +1,230 @@
+.page {
+  padding-top: clamp(32px, 6vh, 56px);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 44px);
+  align-items: start;
+}
+
+/* ---------- meta rail ---------- */
+
+.meta {
+  position: sticky;
+  top: 92px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  border-right: 1px solid var(--line);
+  padding-right: 24px;
+}
+
+.facts {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+}
+
+.facts dt {
+  font-family: var(--mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.facts dd {
+  margin: 5px 0 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.actions {
+  display: grid;
+  gap: 7px;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: var(--step-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  padding: 10px 11px;
+  color: var(--fg-2);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.action:hover {
+  color: var(--fg);
+  border-color: var(--cyn);
+  box-shadow: 0 0 12px var(--glow-cyn);
+}
+
+.primary {
+  background: var(--mag);
+  border-color: var(--mag);
+  color: var(--on-accent);
+}
+
+.primary:hover {
+  color: var(--on-accent);
+  border-color: var(--mag);
+  box-shadow: 0 0 16px var(--glow-mag);
+}
+
+/* ---------- body ---------- */
+
+.eyebrow {
+  margin: 0;
+}
+
+.eyebrow b {
+  color: var(--cyn);
+  font-weight: 500;
+}
+
+.title {
+  font-size: var(--step-title);
+  font-stretch: 122%;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin-top: 12px;
+}
+
+.kicker {
+  margin-top: 18px;
+  max-width: 54ch;
+  font-size: clamp(1.0625rem, 0.5vw + 0.95rem, 1.1875rem);
+  line-height: 1.6;
+  color: var(--fg-2);
+}
+
+.stats {
+  margin: 24px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px clamp(24px, 5vw, 48px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 16px 0;
+}
+
+.stats dt {
+  font-family: var(--display);
+  font-stretch: 118%;
+  font-weight: 800;
+  font-size: 1.625rem;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--cyn);
+}
+
+.stats dd {
+  margin: 5px 0 0;
+  font-family: var(--mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.shot {
+  margin: 26px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.shotImg {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.shot:hover .shotImg {
+  border-color: color-mix(in srgb, var(--cyn) 55%, var(--line));
+  box-shadow: 0 0 24px var(--glow-cyn);
+}
+
+.notes {
+  margin-top: 32px;
+  display: grid;
+  gap: 12px;
+  max-width: var(--measure);
+}
+
+.note {
+  line-height: 1.65;
+}
+
+/* ---------- pager ---------- */
+
+.pager {
+  margin-top: clamp(40px, 8vh, 72px);
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gutter);
+  padding-top: 18px;
+}
+
+.pager a {
+  display: grid;
+  gap: 7px;
+  text-decoration: none;
+}
+
+.pager a:last-child {
+  text-align: right;
+}
+
+.pagerTitle {
+  font-family: var(--display);
+  font-stretch: 118%;
+  font-weight: 800;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  transition: text-shadow 0.25s ease;
+}
+
+.pager a:hover .pagerTitle {
+  color: var(--mag);
+  text-shadow: 0 0 14px var(--glow-mag);
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .meta {
+    position: static;
+    border-right: 0;
+    border-top: 1px solid var(--line);
+    padding-right: 0;
+    padding-top: 20px;
+    order: 2;
+  }
+
+  .facts {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+}

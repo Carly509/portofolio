@@ -1,0 +1,50 @@
+.page {
+  padding-top: clamp(56px, 14vh, 140px);
+  padding-bottom: clamp(48px, 10vh, 96px);
+}
+
+.code {
+  color: var(--mag);
+  font-weight: 500;
+}
+
+.title {
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-stretch: 125%;
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  margin: 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.body {
+  margin-top: 28px;
+  max-width: 44ch;
+  color: var(--fg-2);
+  font-size: clamp(1.0625rem, 0.5vw + 0.95rem, 1.1875rem);
+  line-height: 1.6;
+}
+
+.links {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+}
+
+.links a {
+  font-family: var(--mono);
+  font-size: var(--step-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid var(--mag);
+  padding-bottom: 3px;
+}
+
+.links a:hover {
+  color: var(--mag);
+}
