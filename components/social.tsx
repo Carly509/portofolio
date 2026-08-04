@@ -22,9 +22,9 @@ const glyphs: Record<string, React.ReactNode> = {
   ),
 };
 
-export default function Social({ className = '' }: { className?: string }) {
+export default function Social() {
   return (
-    <ul className={`${styles.row} ${className}`}>
+    <ul className={styles.row}>
       {site.social.map((s) => (
         <li key={s.name}>
           <a

@@ -20,7 +20,6 @@ export type Project = {
    *  shifting between renders and lets layout say which work matters.
    *  cols/rows are spans on a 6-column, 104px-row grid. */
   panel: { cols: number; rows: number };
-  featured?: boolean;
   facts?: { value: string; label: string }[];
   notes?: string[];
 };
@@ -41,7 +40,6 @@ export const projects: Project[] = [
     alt: 'Reperem running on iPhone, showing a pharmacy search results list',
     live: 'https://apps.apple.com/us/app/reperem/id1579713753',
     panel: { cols: 4, rows: 3 },
-    featured: true,
     facts: [
       { value: '1', label: 'Engineer' },
       { value: 'iOS', label: 'App Store' },

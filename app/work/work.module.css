@@ -94,11 +94,6 @@
   text-shadow: 0 0 10px var(--glow-cyn);
 }
 
-.empty {
-  margin-top: 32px;
-  color: var(--fg-2);
-}
-
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));

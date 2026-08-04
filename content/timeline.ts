@@ -1,4 +1,4 @@
-export type Entry = {
+type Entry = {
   year: string;
   title: string;
   where?: string;

@@ -12,10 +12,6 @@
   padding-bottom: 16px;
 }
 
-.eyebrow {
-  margin: 0 0 10px;
-}
-
 .title {
   font-size: var(--step-title);
   font-stretch: 122%;

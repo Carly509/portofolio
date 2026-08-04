@@ -23,25 +23,34 @@ export default function CompleteShelf({ books }: CompleteShelfProps) {
     if (!canvasRef.current || books.length === 0) return;
     let engine: CompleteShelfEngine | null = null;
     let unavailableFrame: number | null = null;
+    let cancelled = false;
 
-    try {
-      engine = new CompleteShelfEngine(canvasRef.current, books, {
-        onActiveIndex: setActiveIndex,
-        onMode: (nextMode, index) => {
-          setMode(nextMode);
-          setSelectedIndex(index);
-        },
-        onReady: () => setReady(true),
-        onStatus: setStatus,
-      });
-      engineRef.current = engine;
-    } catch {
-      unavailableFrame = requestAnimationFrame(() => {
-        setStatus('WebGL is unavailable in this browser');
-      });
+    async function start() {
+      await document.fonts.ready;
+      if (cancelled || !canvasRef.current) return;
+
+      try {
+        engine = new CompleteShelfEngine(canvasRef.current, books, {
+          onActiveIndex: setActiveIndex,
+          onMode: (nextMode, index) => {
+            setMode(nextMode);
+            setSelectedIndex(index);
+          },
+          onReady: () => setReady(true),
+          onStatus: setStatus,
+        });
+        engineRef.current = engine;
+      } catch {
+        unavailableFrame = requestAnimationFrame(() => {
+          setStatus('WebGL is unavailable in this browser');
+        });
+      }
     }
 
+    void start();
+
     return () => {
+      cancelled = true;
       if (unavailableFrame !== null) cancelAnimationFrame(unavailableFrame);
       engine?.dispose();
       engineRef.current = null;

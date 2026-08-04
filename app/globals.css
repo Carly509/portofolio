@@ -8,9 +8,7 @@
 :root {
   /* night ops (default) */
   --ground: #0a0c10;
-  --ground-2: #0d1017;
   --panel: #10141d;
-  --panel-2: #131826;
   --fg: #e6edf3;
   --fg-2: #7d8ca3;
   --line: #1c2433;
@@ -20,7 +18,6 @@
   --glow-mag: rgba(255, 45, 120, 0.35);
   --glow-cyn: rgba(0, 229, 255, 0.28);
   --on-accent: #0a0c10;
-  --scrim: rgba(10, 12, 16, 0.55);
 
   /* type */
   --display: var(--font-display), 'Archivo Black', 'Helvetica Neue', Helvetica,
@@ -29,7 +26,6 @@
     monospace;
 
   /* scale */
-  --step-hero: clamp(3rem, 12vw, 9.5rem);
   --step-title: clamp(2rem, 4.6vw, 3.25rem);
   --step-h2: clamp(1.4rem, 2.4vw, 2rem);
   --step-h3: 1.375rem;
@@ -48,9 +44,7 @@
 @media (prefers-color-scheme: light) {
   :root {
     --ground: #eef0ea;
-    --ground-2: #e8eae2;
     --panel: #e3e6dc;
-    --panel-2: #dbded3;
     --fg: #10141c;
     --fg-2: #5a6472;
     --line: #c9ccc0;
@@ -60,16 +54,13 @@
     --glow-mag: rgba(196, 0, 95, 0.16);
     --glow-cyn: rgba(0, 126, 143, 0.14);
     --on-accent: #ffffff;
-    --scrim: rgba(238, 240, 234, 0.5);
   }
 }
 
 /* The toggle stamps data-theme on <html> and must win in both directions. */
 :root[data-theme='dark'] {
   --ground: #0a0c10;
-  --ground-2: #0d1017;
   --panel: #10141d;
-  --panel-2: #131826;
   --fg: #e6edf3;
   --fg-2: #7d8ca3;
   --line: #1c2433;
@@ -79,14 +70,11 @@
   --glow-mag: rgba(255, 45, 120, 0.35);
   --glow-cyn: rgba(0, 229, 255, 0.28);
   --on-accent: #0a0c10;
-  --scrim: rgba(10, 12, 16, 0.55);
 }
 
 :root[data-theme='light'] {
   --ground: #eef0ea;
-  --ground-2: #e8eae2;
   --panel: #e3e6dc;
-  --panel-2: #dbded3;
   --fg: #10141c;
   --fg-2: #5a6472;
   --line: #c9ccc0;
@@ -96,7 +84,6 @@
   --glow-mag: rgba(196, 0, 95, 0.16);
   --glow-cyn: rgba(0, 126, 143, 0.14);
   --on-accent: #ffffff;
-  --scrim: rgba(238, 240, 234, 0.5);
 }
 
 /* ==========================================================================
@@ -243,12 +230,6 @@ button {
   max-width: var(--measure);
 }
 
-.rule {
-  border: 0;
-  border-top: 1px solid var(--line);
-  margin: 0;
-}
-
 .tabular {
   font-variant-numeric: tabular-nums;
 }
@@ -382,8 +363,7 @@ button {
 
 /* ==========================================================================
    CHANNEL-SPLIT — the misregistration of a display. Red and blue offsets
-   converge into register once, when the boot sequence releases them.
-   Never on scroll, never in a loop.
+   converge into register once on mount. Never on scroll, never in a loop.
    ========================================================================== */
 
 .glitch {
@@ -399,13 +379,6 @@ button {
 
 .glitch > span:nth-child(2) {
   animation-delay: 0.12s;
-}
-
-/* Boot-gated path — only the hero name (glitch-boot), only before the boot
-   sequence releases it. Every other title animates on its own. */
-html.js body:not(.booted) .glitch-boot > span {
-  opacity: 0;
-  animation: none;
 }
 
 @keyframes converge {
@@ -429,17 +402,6 @@ html.js body:not(.booted) .glitch-boot > span {
       0 0 transparent,
       0 0 transparent;
   }
-}
-
-/* On approach, the channels drift apart again — one breath, not a loop. */
-.glitch-hover {
-  transition: text-shadow 0.25s ease;
-}
-
-.glitch-hover:hover {
-  text-shadow:
-    -3px 0 var(--glow-mag),
-    3px 0 var(--glow-cyn);
 }
 
 /* ==========================================================================
@@ -475,8 +437,7 @@ html.js .rise.in {
   }
 
   /* Land on the final frame rather than skipping the effect entirely. */
-  html.js .rise,
-  html.js body:not(.booted) .glitch-boot > span {
+  html.js .rise {
     opacity: 1;
     transform: none;
   }

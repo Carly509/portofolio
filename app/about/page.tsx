@@ -9,7 +9,7 @@ import styles from './about.module.css';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Seven years of engineering, in the order it happened — from human-centred design to healthcare data pipelines.',
+    'Over seven years of engineering, in the order it happened — from human-centred design to healthcare data pipelines.',
   alternates: { canonical: '/about' },
 };
 
@@ -31,7 +31,7 @@ export default function AboutPage() {
         }
       >
         <p>
-          Seven years of building, in the order it happened. Engineering first,
+          Over seven years of building, in the order it happened. Engineering first,
           product because someone had to hold the vision, and a long habit of
           learning in public.
         </p>

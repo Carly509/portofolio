@@ -100,12 +100,6 @@ export default async function WorkPage({
           </li>
         )}
       </ul>
-
-      {shown.length === 0 && (
-        <p className={styles.empty}>
-          Nothing filed under that yet. <Link href="/work">See everything</Link>.
-        </p>
-      )}
     </div>
   );
 }

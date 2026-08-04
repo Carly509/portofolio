@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-// import Boot from '@/components/boot';
 import Portrait from '@/components/portrait';
 import Social from '@/components/social';
 import styles from './page.module.css';
@@ -9,8 +8,6 @@ export default function Home() {
   return (
     <div className={`shell ${styles.page}`}>
       <section className={styles.hero}>
-        {/* <Boot /> */}
-
         <Portrait />
 
         {/* Two channels, converging into register. The thesis of the site. */}
@@ -20,13 +17,8 @@ export default function Home() {
         </h1>
 
         <p className={`label ${styles.eyebrow}`}>
-          Software engineer · React &amp; Rails · <b>7 years</b>
+          Software engineer · <b>7+ years</b>
         </p>
-
-        <ul className={styles.status}>
-          <li>Stack — React · TS · Next · Rails · Node</li>
-          <li>Mode — Full-stack engineer</li>
-        </ul>
 
         <div className={styles.intro}>
           <p>

@@ -20,10 +20,25 @@ type RuntimeBook = {
   content: THREE.Group;
   idle: THREE.Group;
   pickProxy: THREE.Mesh;
+  paperMaterial: THREE.MeshStandardMaterial;
   textures: THREE.Texture[];
   x: number;
   hover: number;
   targetHover: number;
+};
+
+type ShelfTheme = {
+  ground: string;
+  panel: string;
+  fg: string;
+  fg2: string;
+  line: string;
+  mag: string;
+  cyn: string;
+  page: string;
+  displayFont: string;
+  monoFont: string;
+  isLight: boolean;
 };
 
 const shelfTop = 0.34;
@@ -44,6 +59,29 @@ function damp(current: number, target: number, lambda: number, delta: number) {
 function smooth(value: number) {
   const t = clamp(value, 0, 1);
   return t * t * (3 - 2 * t);
+}
+
+function readShelfTheme(): ShelfTheme {
+  const root = document.documentElement;
+  const tokens = getComputedStyle(root);
+  const mode = root.dataset.theme;
+  const isLight = mode === 'light' || (mode !== 'dark' && window.matchMedia('(prefers-color-scheme: light)').matches);
+  const ground = tokens.getPropertyValue('--ground').trim();
+  const fg = tokens.getPropertyValue('--fg').trim();
+
+  return {
+    ground,
+    panel: tokens.getPropertyValue('--panel').trim(),
+    fg,
+    fg2: tokens.getPropertyValue('--fg-2').trim(),
+    line: tokens.getPropertyValue('--line').trim(),
+    mag: tokens.getPropertyValue('--mag').trim(),
+    cyn: tokens.getPropertyValue('--cyn').trim(),
+    page: isLight ? ground : fg,
+    displayFont: getComputedStyle(document.body).fontFamily || 'sans-serif',
+    monoFont: tokens.getPropertyValue('--font-mono').trim() || 'monospace',
+    isLight,
+  };
 }
 
 function wrapText(
@@ -84,7 +122,7 @@ function seeded(seed: string) {
   };
 }
 
-function makeCover(book: Book, spine = false) {
+function makeCover(book: Book, theme: ShelfTheme, spine = false) {
   const canvas = document.createElement('canvas');
   canvas.width = spine ? 128 : 512;
   canvas.height = spine ? 1024 : 768;
@@ -118,10 +156,10 @@ function makeCover(book: Book, spine = false) {
     context.fillStyle = book.ink;
     context.translate(width / 2, height - 72);
     context.rotate(-Math.PI / 2);
-    context.font = '600 48px Georgia, serif';
+    context.font = `600 48px ${theme.displayFont}`;
     context.textBaseline = 'middle';
     context.fillText(book.shortTitle, 0, 0, height - 135);
-    context.font = '500 22px system-ui, sans-serif';
+    context.font = `500 22px ${theme.monoFont}`;
     context.fillText(book.author, 0, 54, height - 135);
     return canvas;
   }
@@ -132,23 +170,23 @@ function makeCover(book: Book, spine = false) {
   context.strokeRect(15, 15, width - 30, height - 30);
   context.globalAlpha = 1;
   context.fillStyle = book.ink;
-  context.font = '600 11px system-ui, sans-serif';
+  context.font = `600 11px ${theme.monoFont}`;
   context.letterSpacing = '2px';
   context.fillText("CARLY'S SHELF", 38, 48);
   context.letterSpacing = '0px';
-  context.font = `600 ${book.title.length > 24 ? 44 : 57}px Georgia, serif`;
+  context.font = `600 ${book.title.length > 24 ? 44 : 57}px ${theme.displayFont}`;
   const lines = wrapText(context, book.title, width - 76, 4);
   lines.forEach((line, index) => context.fillText(line, 38, 116 + index * 52));
-  context.font = '500 18px system-ui, sans-serif';
+  context.font = `500 18px ${theme.monoFont}`;
   context.fillText(book.author, 38, Math.max(350, 134 + lines.length * 52));
   context.globalAlpha = 0.78;
-  context.font = '500 10px system-ui, sans-serif';
+  context.font = `500 10px ${theme.monoFont}`;
   context.letterSpacing = '2px';
   context.fillText('A BOOK WORTH PASSING ON', 38, height - 44);
   return canvas;
 }
 
-function makeBackCover(book: Book) {
+function makeBackCover(book: Book, theme: ShelfTheme) {
   const canvas = document.createElement('canvas');
   canvas.width = 512;
   canvas.height = 768;
@@ -158,14 +196,14 @@ function makeBackCover(book: Book) {
   context.fillStyle = book.cover;
   context.fillRect(0, 0, canvas.width, canvas.height);
   context.fillStyle = book.ink;
-  context.font = '500 25px Georgia, serif';
+  context.font = `500 25px ${theme.displayFont}`;
   context.textBaseline = 'top';
   const lines = wrapText(context, book.description, 346, 9);
   lines.forEach((line, index) => context.fillText(line, 82, 112 + index * 36));
   context.fillStyle = book.accent;
   context.fillRect(82, 112 + lines.length * 36 + 38, 92, 5);
   context.fillStyle = book.ink;
-  context.font = 'italic 500 29px Georgia, serif';
+  context.font = `italic 500 29px ${theme.displayFont}`;
   wrapText(context, `“${book.quote}”`, 346, 5).forEach((line, index) =>
     context.fillText(line, 82, 112 + lines.length * 36 + 86 + index * 38),
   );
@@ -187,6 +225,15 @@ export class CompleteShelfEngine {
   private raycaster = new THREE.Raycaster();
   private pointer = new THREE.Vector2(10, 10);
   private resizeObserver: ResizeObserver;
+  private themeObserver: MutationObserver;
+  private theme: ShelfTheme;
+  private hemisphere!: THREE.HemisphereLight;
+  private key!: THREE.DirectionalLight;
+  private rim!: THREE.DirectionalLight;
+  private wallMaterial!: THREE.MeshStandardMaterial;
+  private groundMaterial!: THREE.MeshStandardMaterial;
+  private shelfMaterial!: THREE.MeshStandardMaterial;
+  private shelfEdgeMaterial!: THREE.MeshPhysicalMaterial;
   private animationFrame = 0;
   private activeIndex = 0;
   private selectedIndex: number | null = null;
@@ -208,6 +255,7 @@ export class CompleteShelfEngine {
     this.booksData = books;
     this.callbacks = callbacks;
     this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.theme = readShelfTheme();
     this.renderer = new THREE.WebGLRenderer({
       canvas,
       antialias: true,
@@ -236,6 +284,11 @@ export class CompleteShelfEngine {
     this.resizeObserver = new ResizeObserver(this.handleResize);
     this.setupScene();
     this.createBooks();
+    this.themeObserver = new MutationObserver(this.applyTheme);
+    this.themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
     this.bindEvents();
     this.resizeObserver.observe(canvas);
     this.handleResize();
@@ -245,38 +298,42 @@ export class CompleteShelfEngine {
   }
 
   private setupScene() {
-    this.scene.background = new THREE.Color('#eee8db');
-    this.scene.fog = new THREE.Fog('#eee8db', 10, 26);
-    this.scene.add(new THREE.HemisphereLight('#fff8ea', '#6e5848', 2.4));
+    const light = this.theme.isLight ? this.theme.ground : this.theme.fg;
+    this.scene.background = new THREE.Color(this.theme.ground);
+    this.scene.fog = new THREE.Fog(this.theme.ground, 10, 26);
+    this.hemisphere = new THREE.HemisphereLight(light, this.theme.panel, 2.4);
+    this.scene.add(this.hemisphere);
 
-    const key = new THREE.DirectionalLight('#fff6e7', 4.6);
-    key.position.set(-4.2, 7.4, 5.5);
-    key.castShadow = true;
-    key.shadow.mapSize.set(window.innerWidth < 700 ? 1024 : 2048, window.innerWidth < 700 ? 1024 : 2048);
-    key.shadow.camera.left = -8;
-    key.shadow.camera.right = 8;
-    key.shadow.camera.top = 6;
-    key.shadow.camera.bottom = -2;
-    key.shadow.camera.near = 0.5;
-    key.shadow.camera.far = 22;
-    key.shadow.bias = -0.0005;
-    this.scene.add(key);
+    this.key = new THREE.DirectionalLight(light, 4.6);
+    this.key.position.set(-4.2, 7.4, 5.5);
+    this.key.castShadow = true;
+    this.key.shadow.mapSize.set(window.innerWidth < 700 ? 1024 : 2048, window.innerWidth < 700 ? 1024 : 2048);
+    this.key.shadow.camera.left = -8;
+    this.key.shadow.camera.right = 8;
+    this.key.shadow.camera.top = 6;
+    this.key.shadow.camera.bottom = -2;
+    this.key.shadow.camera.near = 0.5;
+    this.key.shadow.camera.far = 22;
+    this.key.shadow.bias = -0.0005;
+    this.scene.add(this.key);
 
-    const rim = new THREE.DirectionalLight('#c8d5e5', 2.1);
-    rim.position.set(5, 3, -4);
-    this.scene.add(rim);
+    this.rim = new THREE.DirectionalLight(this.theme.cyn, 2.1);
+    this.rim.position.set(5, 3, -4);
+    this.scene.add(this.rim);
 
+    this.wallMaterial = new THREE.MeshStandardMaterial({ color: this.theme.ground, roughness: 1 });
     const wall = new THREE.Mesh(
       new THREE.PlaneGeometry(34, 18),
-      new THREE.MeshStandardMaterial({ color: '#eee8db', roughness: 1 }),
+      this.wallMaterial,
     );
     wall.position.set(0, 5, -3.2);
     wall.receiveShadow = true;
     this.scene.add(wall);
 
+    this.groundMaterial = new THREE.MeshStandardMaterial({ color: this.theme.panel, roughness: 0.94 });
     const ground = new THREE.Mesh(
       new THREE.PlaneGeometry(36, 18),
-      new THREE.MeshStandardMaterial({ color: '#e7dfd0', roughness: 0.94 }),
+      this.groundMaterial,
     );
     ground.rotation.x = -Math.PI / 2;
     ground.position.y = -0.24;
@@ -284,6 +341,24 @@ export class CompleteShelfEngine {
     this.scene.add(ground, this.shelfGroup);
     this.shelfGroup.add(this.shelfFurniture);
   }
+
+  private applyTheme = () => {
+    this.theme = readShelfTheme();
+    const light = this.theme.isLight ? this.theme.ground : this.theme.fg;
+    this.scene.background = new THREE.Color(this.theme.ground);
+    this.scene.fog?.color.set(this.theme.ground);
+    this.hemisphere.color.set(light);
+    this.hemisphere.groundColor.set(this.theme.panel);
+    this.key.color.set(light);
+    this.rim.color.set(this.theme.cyn);
+    this.wallMaterial.color.set(this.theme.ground);
+    this.groundMaterial.color.set(this.theme.panel);
+    this.shelfMaterial.color.set(this.theme.line);
+    this.shelfEdgeMaterial.color.set(this.theme.fg2);
+    this.runtimeBooks.forEach((book) => {
+      book.paperMaterial.color.set(this.theme.page);
+    });
+  };
 
   private toTexture(canvas: HTMLCanvasElement, anisotropy = 8) {
     const texture = new THREE.CanvasTexture(canvas);
@@ -306,18 +381,20 @@ export class CompleteShelfEngine {
     });
 
     const shelfWidth = cursor + 8;
+    this.shelfMaterial = new THREE.MeshStandardMaterial({ color: this.theme.line, roughness: 0.62 });
     const shelf = new THREE.Mesh(
       new RoundedBoxGeometry(shelfWidth, 0.22, 1.72, 4, 0.045),
-      new THREE.MeshStandardMaterial({ color: '#5a4132', roughness: 0.62 }),
+      this.shelfMaterial,
     );
     shelf.position.set(cursor * 0.5, shelfTop - 0.14, 0);
     shelf.castShadow = true;
     shelf.receiveShadow = true;
     this.shelfFurniture.add(shelf);
 
+    this.shelfEdgeMaterial = new THREE.MeshPhysicalMaterial({ color: this.theme.fg2, roughness: 0.46, clearcoat: 0.14 });
     const shelfEdge = new THREE.Mesh(
       new RoundedBoxGeometry(shelfWidth, 0.12, 0.16, 3, 0.025),
-      new THREE.MeshPhysicalMaterial({ color: '#4b3429', roughness: 0.46, clearcoat: 0.14 }),
+      this.shelfEdgeMaterial,
     );
     shelfEdge.position.set(cursor * 0.5, shelfTop - 0.08, 0.85);
     shelfEdge.castShadow = true;
@@ -342,7 +419,7 @@ export class CompleteShelfEngine {
       sheen: 0.36,
       sheenColor: new THREE.Color(book.ink),
     });
-    const paperMaterial = new THREE.MeshStandardMaterial({ color: '#e9dfca', roughness: 0.88 });
+    const paperMaterial = new THREE.MeshStandardMaterial({ color: this.theme.page, roughness: 0.88 });
     const pageBlock = new THREE.Mesh(
       new RoundedBoxGeometry(width - 0.075, book.height - 0.105, Math.max(0.08, book.thickness - 0.052), 3, 0.018),
       paperMaterial,
@@ -368,9 +445,9 @@ export class CompleteShelfEngine {
     spine.castShadow = true;
     idle.add(spine);
 
-    const frontTexture = this.toTexture(makeCover(book));
-    const backTexture = this.toTexture(makeBackCover(book));
-    const spineTexture = this.toTexture(makeCover(book, true), 4);
+    const frontTexture = this.toTexture(makeCover(book, this.theme));
+    const backTexture = this.toTexture(makeBackCover(book, this.theme));
+    const spineTexture = this.toTexture(makeCover(book, this.theme, true), 4);
     const textures = [frontTexture, backTexture, spineTexture];
     const front = new THREE.Mesh(
       new THREE.PlaneGeometry(width - 0.065, book.height - 0.065),
@@ -401,7 +478,7 @@ export class CompleteShelfEngine {
     idle.add(pickProxy);
     this.pickTargets.push(pickProxy);
 
-    return { data: book, index, slot, content, idle, pickProxy, textures, x, hover: 0, targetHover: 0 };
+    return { data: book, index, slot, content, idle, pickProxy, paperMaterial, textures, x, hover: 0, targetHover: 0 };
   }
 
   private bindEvents() {
@@ -667,6 +744,7 @@ export class CompleteShelfEngine {
     this.disposed = true;
     cancelAnimationFrame(this.animationFrame);
     this.resizeObserver.disconnect();
+    this.themeObserver.disconnect();
     this.controls.dispose();
     this.canvas.removeEventListener('wheel', this.handleWheel);
     this.canvas.removeEventListener('pointerdown', this.handlePointerDown);

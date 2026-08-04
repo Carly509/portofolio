@@ -1,4 +1,4 @@
-export type Article = {
+type Article = {
   slug: string;
   title: string;
   /** The standfirst — one sentence, what the reader gets. */

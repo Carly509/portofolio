@@ -2,12 +2,10 @@ import type { ReactNode } from 'react';
 import styles from './page-header.module.css';
 
 export default function PageHeader({
-  eyebrow,
   title,
   children,
   aside,
 }: {
-  eyebrow?: string;
   title: string;
   children?: ReactNode;
   aside?: ReactNode;
@@ -20,7 +18,6 @@ export default function PageHeader({
     <header className={styles.header}>
       <div className={styles.top}>
         <div>
-          {eyebrow && <p className={`label ${styles.eyebrow}`}>{eyebrow}</p>}
           <h1 className={`glitch ${styles.title}`}>
             <span>
               {word}

@@ -8,7 +8,7 @@ export const site = {
   resume: '/resume.pdf',
   twitterHandle: '@TesnorC',
   description:
-    'Software engineer with seven years building for the web and iOS — React, TypeScript, Next.js and Ruby on Rails. Shipped projects include Reperem, a pharmacy search app for Haiti.',
+    'Software engineer with over seven years building for the web, iOS, and healthcare data — C#, NestJS, MSSQL, React, and TypeScript. Shipped projects include Reperem, a pharmacy search app for Haiti.',
   social: [
     { name: 'GitHub', href: 'https://github.com/Carly509' },
     { name: 'LinkedIn', href: 'https://www.linkedin.com/in/carly-tesnor-633736160/' },

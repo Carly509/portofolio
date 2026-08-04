@@ -13,12 +13,6 @@
   scroll-margin-top: 96px;
 }
 
-.prose h3 {
-  font-size: var(--step-h3);
-  margin-top: 1.8em;
-  scroll-margin-top: 96px;
-}
-
 .prose a {
   border-bottom: 1px solid var(--mag);
   text-decoration: none;
@@ -36,8 +30,7 @@
   padding: 1px 5px;
 }
 
-.prose ul,
-.prose ol {
+.prose ul {
   display: grid;
   gap: 0.5em;
   padding-left: 1.4em;
@@ -53,21 +46,6 @@
   position: absolute;
   left: -1.2em;
   color: var(--cyn);
-}
-
-.prose ol {
-  counter-reset: step;
-}
-
-.prose ol li::before {
-  counter-increment: step;
-  content: counter(step, decimal-leading-zero);
-  top: 0.2em;
-  left: -1.9em;
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  color: var(--mag);
 }
 
 /* A pull quote, against the magenta channel. */
