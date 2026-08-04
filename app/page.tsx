@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 // import Boot from '@/components/boot';
+import Portrait from '@/components/portrait';
 import Social from '@/components/social';
 import styles from './page.module.css';
 
@@ -10,15 +11,17 @@ export default function Home() {
       <section className={styles.hero}>
         {/* <Boot /> */}
 
-        <p className={`label ${styles.eyebrow}`}>
-          Software engineer · React &amp; Rails · <b>7 years</b>
-        </p>
+        <Portrait />
 
         {/* Two channels, converging into register. The thesis of the site. */}
         <h1 className={`glitch ${styles.name}`} data-cursor="Home">
           <span>Carly</span>
           <span>Tesnor</span>
         </h1>
+
+        <p className={`label ${styles.eyebrow}`}>
+          Software engineer · React &amp; Rails · <b>7 years</b>
+        </p>
 
         <ul className={styles.status}>
           <li>Stack — React · TS · Next · Rails · Node</li>

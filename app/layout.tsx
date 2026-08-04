@@ -6,6 +6,7 @@ import Footer from '@/components/footer';
 import Reticle from '@/components/reticle';
 import Telemetry from '@/components/telemetry';
 import ScrollReveal from '@/components/scroll-reveal';
+import GridWave from '@/components/grid-wave';
 import CommandPalette from '@/components/command-palette';
 import { site } from '@/content/site';
 
@@ -95,8 +96,10 @@ export default function RootLayout({
           stamp attributes on <body> before React hydrates — that's their
           DOM, not a mismatch worth an error. */}
       <body suppressHydrationWarning>
-        {/* Atmosphere: grid floor, scanlines, grain, HUD brackets. */}
+        {/* Atmosphere: dormant grid floor, pointer-reactive wave, scanlines,
+            grain, HUD brackets. */}
         <div className="grid-floor" aria-hidden="true" />
+        <GridWave />
         <div className="scanlines" aria-hidden="true" />
         <div className="grain" aria-hidden="true" />
         <div className="hud" aria-hidden="true">

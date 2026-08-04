@@ -17,36 +17,6 @@ export default function Footer() {
           </p>
         </div>
 
-        <nav className={styles.social} aria-label="Elsewhere">
-          {site.social.map((s) => (
-            <a
-              key={s.name}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.link}
-              data-cursor="Visit"
-            >
-              {s.name} ↗
-            </a>
-          ))}
-          <a
-            href={site.resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.link}
-            data-cursor="Resumé ↗"
-          >
-            Resumé ↗
-          </a>
-          <a
-            href={`mailto:${site.email}`}
-            className={styles.link}
-            data-cursor="Write"
-          >
-            {site.email}
-          </a>
-        </nav>
       </div>
     </footer>
   );

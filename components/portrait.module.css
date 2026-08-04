@@ -1,0 +1,90 @@
+.figure {
+  width: clamp(128px, 16vw, 168px);
+  align-self: flex-start;
+  margin: 0 0 clamp(18px, 3vh, 28px);
+}
+
+.frame {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 50%;
+  background: transparent;
+  /* A soft circular edge lets the photographed backdrop dissolve into either
+     SIGNAL theme rather than reading as a separate rectangular container. */
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    #000 0%,
+    #000 63%,
+    rgba(0, 0, 0, 0.88) 73%,
+    rgba(0, 0, 0, 0.42) 86%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle at center,
+    #000 0%,
+    #000 63%,
+    rgba(0, 0, 0, 0.88) 73%,
+    rgba(0, 0, 0, 0.42) 86%,
+    transparent 100%
+  );
+}
+
+.previous,
+.current {
+  object-fit: cover;
+  filter: contrast(1.06) brightness(0.9);
+}
+
+.previous {
+  z-index: 0;
+}
+
+.current {
+  z-index: 1;
+  animation: frame-in 130ms ease-out both;
+}
+
+/* SIGNAL's two channels tint every gaze direction evenly. The layer sits
+   above the transition, so it also conceals the last trace of a crossfade. */
+.tone {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(135deg, var(--mag), var(--cyn));
+  mix-blend-mode: color;
+  opacity: 0.34;
+  transition: opacity 0.2s ease;
+}
+
+.figure:hover .tone {
+  opacity: 0.12;
+}
+
+.caption {
+  display: block;
+  padding-top: 8px;
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyn);
+}
+
+@keyframes frame-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .current {
+    animation: none;
+  }
+}
