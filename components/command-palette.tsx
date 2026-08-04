@@ -46,7 +46,7 @@ export default function CommandPalette() {
       ...projects.map((p) => ({
         id: `project-${p.slug}`,
         label: p.title,
-        group: 'Work',
+        group: 'Side Projects',
         hint: p.stack.slice(0, 2).join(' · '),
         run: go(`/work/${p.slug}`),
       })),
@@ -54,7 +54,7 @@ export default function CommandPalette() {
       ...(Object.keys(kindLabels) as (keyof typeof kindLabels)[]).map((kind) => ({
         id: `filter-${kind}`,
         label: `Filter — ${kindLabels[kind]}`,
-        group: 'Work',
+        group: 'Side Projects',
         hint: `?type=${kind}`,
         run: go(`/work?type=${kind}`),
       })),
@@ -219,7 +219,7 @@ export default function CommandPalette() {
               setQuery(e.target.value);
               setCursor(0);
             }}
-            placeholder="query work, writing, coordinates…"
+            placeholder="query side projects, writing, coordinates…"
             aria-label="Search"
             autoComplete="off"
             spellCheck={false}

@@ -8,7 +8,7 @@ export const site = {
   resume: '/resume.pdf',
   twitterHandle: '@TesnorC',
   description:
-    'Software engineer with seven years building for the web and iOS — React, TypeScript, Next.js and Ruby on Rails. Shipped work includes Reperem, a pharmacy search app for Haiti.',
+    'Software engineer with seven years building for the web and iOS — React, TypeScript, Next.js and Ruby on Rails. Shipped projects include Reperem, a pharmacy search app for Haiti.',
   social: [
     { name: 'GitHub', href: 'https://github.com/Carly509' },
     { name: 'LinkedIn', href: 'https://www.linkedin.com/in/carly-tesnor-633736160/' },
@@ -21,7 +21,7 @@ export const site = {
    masthead. Contact is a mailto rather than a page: clicking it opens their
    mail client with the address filled in, which is the whole job a form did. */
 export const nav = [
-  { label: 'Work', href: '/work' },
+  { label: 'Side Projects', href: '/work' },
   { label: 'Writing', href: '/writing' },
   { label: 'About', href: '/about' },
   { label: 'Email', href: `mailto:${site.email}`, external: true },

@@ -14,12 +14,12 @@ export default function NotFound() {
       </h1>
       <p className={styles.body}>
         This frequency isn&apos;t broadcasting. The page may have moved when
-        the site was rebuilt — the work and the writing are both still
+        the site was rebuilt — the projects and the writing are both still
         transmitting.
       </p>
       <div className={styles.links}>
         <Link href="/work" data-cursor="See all">
-          See the work →
+          See side projects →
         </Link>
         <Link href="/" data-cursor="Home">
           Back to the index →

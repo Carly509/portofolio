@@ -11,9 +11,9 @@ import {
 import styles from './work.module.css';
 
 export const metadata: Metadata = {
-  title: 'Work',
+  title: 'Side Projects',
   description:
-    'Shipped projects — iOS apps, client sites, developer tools and open source. React, React Native, Ruby and WordPress.',
+    'Side projects, iOS apps, client sites, developer tools and open source. React, React Native, Ruby and WordPress.',
   alternates: { canonical: '/work' },
 };
 
@@ -35,7 +35,7 @@ export default async function WorkPage({
   return (
     <div className={`shell ${styles.page}`}>
       <PageHeader
-        title="Work."
+        title="Side Projects."
         aside={
           <>
             <Link
@@ -84,7 +84,7 @@ export default async function WorkPage({
 
         {active === 'all' && (
           <li className={`${styles.cell} ${styles.note} rise`}>
-            <p className={`label ${styles.noteLabel}`}>Client work</p>
+            <p className={`label ${styles.noteLabel}`}>Client projects</p>
             <p className={styles.noteBody}>
               Shipped sites for cleaning, home-service and mobile companies.
               Built to be handed over — most of them their team edits without me.
@@ -95,7 +95,7 @@ export default async function WorkPage({
               scroll={false}
               data-cursor="Filter"
             >
-              See the client work →
+              See the client projects →
             </Link>
           </li>
         )}

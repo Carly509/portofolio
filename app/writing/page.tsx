@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import PageHeader from '@/components/page-header';
+import CompleteShelf from '@/components/complete-shelf';
+import { books } from '@/content/books';
 import { articles, formatDate } from '@/content/writing';
 import styles from './writing.module.css';
 
@@ -58,6 +60,18 @@ export default function WritingPage() {
           </li>
         ))}
       </ul>
+
+      <section className={styles.recommendations} aria-labelledby="books-heading">
+        <div className={styles.recommendationHead}>
+          <p className="label">READING RECOMMENDATIONS // OPEN SHELF</p>
+          <h2 id="books-heading">Books worth losing a weekend to.</h2>
+          <p>
+            A growing list of books worth passing on. Drag, scroll, or use the
+            arrow keys to browse, then inspect a volume.
+          </p>
+        </div>
+        <CompleteShelf books={books} />
+      </section>
     </div>
   );
 }

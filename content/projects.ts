@@ -196,21 +196,6 @@ export const projects: Project[] = [
     panel: { cols: 2, rows: 2 },
   },
   {
-    slug: 'mobile-pushers',
-    title: 'Mobile Pushers',
-    tagline: 'Mobile development studio',
-    summary:
-      'Site for a mobile development studio, structured around case studies instead of a service grid.',
-    year: '2022',
-    role: 'Build',
-    kinds: ['client'],
-    stack: ['HTML', 'CSS', 'JavaScript'],
-    image: '/img/mp.png',
-    alt: 'Mobile Pushers homepage with app case studies',
-    live: 'http://mobilepushers.com/',
-    panel: { cols: 2, rows: 2 },
-  },
-  {
     slug: 'landing-page-template',
     title: 'Landing Page Template',
     tagline: 'One template, any category',
@@ -261,7 +246,7 @@ export const projects: Project[] = [
 
 export const kindLabels: Record<ProjectKind, string> = {
   app: 'Apps',
-  client: 'Client work',
+  client: 'Client projects',
   'open-source': 'Open source',
   tool: 'Tools',
 };

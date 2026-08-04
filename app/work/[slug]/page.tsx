@@ -89,7 +89,7 @@ export default async function CasePage({ params }: Params) {
               </a>
             )}
             <Link href="/work" className={styles.action} data-cursor="Back">
-              <span>All work</span>
+              <span>All side projects</span>
               <span aria-hidden="true">←</span>
             </Link>
           </div>
@@ -97,7 +97,7 @@ export default async function CasePage({ params }: Params) {
 
         <div className={styles.main}>
           <p className={`label ${styles.eyebrow}`}>
-            Case study <b>{String(i + 1).padStart(2, '0')}</b>
+            Project file <b>{String(i + 1).padStart(2, '0')}</b>
             <b>{'//' + String(projects.length).padStart(2, '0')}</b>
           </p>
 
@@ -145,7 +145,7 @@ export default async function CasePage({ params }: Params) {
         </div>
       </div>
 
-      <nav className={styles.pager} aria-label="More work">
+      <nav className={styles.pager} aria-label="More side projects">
         <Link href={`/work/${prev.slug}`} data-cursor="Previous">
           <span className="label">Previous</span>
           <span className={styles.pagerTitle}>← {prev.title}</span>

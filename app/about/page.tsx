@@ -48,7 +48,7 @@ export default function AboutPage() {
             make the two meet.
           </p>
           <Link href="/work" className={styles.more} data-cursor="See all">
-            See the work →
+            See side projects →
           </Link>
         </div>
         <div>

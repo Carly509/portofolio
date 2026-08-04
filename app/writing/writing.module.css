@@ -6,6 +6,34 @@
   margin-top: clamp(16px, 3vh, 28px);
 }
 
+.recommendations {
+  margin-top: clamp(64px, 11vw, 132px);
+}
+
+.recommendationHead {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(240px, 0.75fr);
+  gap: 12px 32px;
+  align-items: end;
+  margin-bottom: 20px;
+}
+
+.recommendationHead > :first-child {
+  grid-column: 1 / -1;
+  color: var(--cyn);
+}
+
+.recommendationHead h2 {
+  font-size: clamp(1.8rem, 4.2vw, 3.4rem);
+}
+
+.recommendationHead > p:last-child {
+  max-width: 45ch;
+  color: var(--fg-2);
+  font-size: var(--step-small);
+  line-height: 1.5;
+}
+
 .item {
   border-bottom: 1px solid var(--line-soft);
 }
@@ -94,5 +122,14 @@
 
   .time {
     text-align: left;
+  }
+
+  .recommendationHead {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .recommendationHead > :first-child {
+    grid-column: auto;
   }
 }
